@@ -1,0 +1,15 @@
+{
+  "Twin"    : "splinter_twin",
+  "Pod"     : "birthing_pod",
+  "Jund"    : "tarmogoyf",
+  "Affinity": "mox_opal",
+  "Dredge"  : "faithless_looting",
+  "Humans"  : "noble_hierarch",
+
+  "Burn"    : "eidolon_of_the_great_revel",
+  "Shadow"  : "death's_shadow",
+  "Titan"   : "primeval_titan",
+  "Tron"    : "karn_liberated",
+  "Storm"   : "grapeshot",
+  "UW Control": "jace_the_mind_sculptor"
+}
