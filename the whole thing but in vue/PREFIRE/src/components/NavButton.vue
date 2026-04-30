@@ -1,6 +1,12 @@
 <template>
     <a :href="button.link" >
-        <button :class="button.frame">{{ button.name }}</button>
+        <button :class="button.frame">
+            <img 
+                v-if="button.frame === 'nav-home'"
+                class="icon"
+            />
+            {{ button.name }}
+        </button>
     </a>
 </template>
 
@@ -15,13 +21,26 @@ defineProps({
 </script>
 
 <style scoped>
-:root {
-  --col-white: #fbfcc2; --col-ui-white: 
-  --col-blue : #7ebff0; --col-ui-blue : 
-  --col-black: #848484; --col-ui-black: 
-  --col-red  : #e75f5f; --col-ui-red  : 
-  --col-green: #53b16b; --col-ui-green: 
-  --col-ui-artifact: ;
+
+.icon {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(191, 189, 189); /* your desired color */
+
+  -webkit-mask-image: url("../RESOURCES/img/ui/home.png");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+
+  mask-image: url("../RESOURCES/img/ui/home.png");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+
+  &:hover{
+    background-color       : black;
+    z-index     : 2;
+    transition  : 0.2s;
+    cursor      : pointer;
+  }
 }
 
 a.nav-home {
@@ -39,23 +58,25 @@ a.nav-home {
   filter       : none !important;
 }
 a.nav-home:hover { opacity: 1; cursor: pointer; }
-a.nav-home svg   { width: 2em; height: 2em; }
+a.nav-home img   { width: 2em; height: 2em; }
 a, button {
   --border-natural-size: 48px;
   --border-half-size   : 24px;
-  display: inline-block;
-  width: calc(80% - var(--border-natural-size)); margin-inline: 10%;
-  
+  flex: 1;
+  width: 90%;
+  margin-top: -20px;
+
   border              : var(--border-half-size) solid transparent;
   border-image        : url(border.png) 33 round;
   border-radius       : var(--border-natural-size); 
 
   text-decoration     : none;
   font-family         : Beleren;
-  font-size           : 1.5em;
-  text-align          : center;
-  text-decoration     : none;
+  font-size           : 1.15em;
   color               : black;
+
+  justify-content: center;
+  align-items: center;
 
   z-index     : 1;
   transition  : 0.2s;
@@ -65,8 +86,8 @@ a, button {
   line-height : --height;
   &:hover{
     filter      : saturate(1.0) contrast(1.2) drop-shadow(0px 3px 9px black);
-    text-shadow : 0px 3px 10px var(--col-dark-2-transparent);
-    color       : var(--col-dark-1);
+    text-shadow : 0px 3px 10px #222222ee;;
+    color       : #111;
     z-index     : 2;
     transition  : 0.2s;
     cursor      : pointer;
@@ -79,8 +100,22 @@ a, button {
 .red             {border-image-source : url("../RESOURCES/img/ui/red.webp"      );background-color: var(  #f4cab5  );}
 .green           {border-image-source : url("../RESOURCES/img/ui/green.webp"    );background-color: var(#bfccc2   );}
 button {
-  margin-block: 15px;
   height: 70px;
   line-height: 1em;
 }
+.nav-home {
+  background-color    : transparent;
+  transform          : translateY(-15%);
+  filter      : drop-shadow(0px 0px 0px black);
+  &:hover{
+    filter      : saturate(1.0) contrast(1.2) drop-shadow(0px 0px 0px black);
+    text-shadow : 0px 3px 10px #222222ee;
+    color       : #111;
+    z-index     : 2;
+    transition  : 0.2s;
+    cursor      : pointer;
+  }
+}
+
+
 </style>
