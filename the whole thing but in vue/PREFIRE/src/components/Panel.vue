@@ -1,17 +1,16 @@
 <template>
     <div 
         class="panel"
-        :class="{ 'image': image }"
         :style="{
             ...imageStyle,
             textAlign: centerText ? 'center' : undefined
         }"
     >
-        <div class="header">{{ title }}</div>
+        <div class="header" :style="{textAlign: centerTitle ? 'center' : ''}">{{ title }}</div>
         <slot 
             :style="{textAlign: centerText ? 'center' : ''}"
             style="text-align: center"
-        ></slot>
+         ></slot>
     </div>
 
 </template>
@@ -21,18 +20,38 @@ import { computed } from 'vue';
 
 const props = defineProps({
     title: String,
-    image: Image,
-    centerText: Boolean
+    image: String,
+    centerText: Boolean,
+    centerTitle: Boolean
 })
 
 const imageStyle = computed(() => {
-  if (!props.image) return {};
-
-  return {
-    backgroundImage: `url(${props.image})`,
+  const base = {
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat'
+  };
+
+  if (!props.image) {
+    return {
+      ...base,
+      backgroundImage: `linear-gradient(
+        var(--col-dark-1-transparent),
+        var(--col-dark-2-transparent)
+      )`
+    };
+  }
+
+  return {
+    ...base,
+    backgroundImage: `
+      linear-gradient(
+        to right,
+        var(--col-dark-1-transparent),
+        #00000077
+      ),
+      url(${props.image})
+    `
   };
 });
 </script>
@@ -41,11 +60,10 @@ const imageStyle = computed(() => {
 .header {
   font-size: 1.5em;
   font-weight: bold;
-  padding: 10px;
+  padding: 5px;
   border          : 5px solid var(--col-dark-1);
   background-image: linear-gradient(var(--col-dark-1), var(--col-dark-2));
   font-family: Beleren;
-  text-align: center;
 }
 
 .panel {
@@ -57,16 +75,6 @@ const imageStyle = computed(() => {
   border          : 5px solid var(--col-darker);
   border-radius   : 2px 2px 10% 10%;
   box-shadow      : 0px 0px 1px 2px inset var(--col-dark-1), 0px 2px 8px 2px var(--col-dark-1);
-  color          : var(--col-lightest);
-}
-
-.panel:not(.image) {
-  background-image: linear-gradient(var(--col-dark-1-transparent), var(--col-dark-2-transparent));
-}
-
-.image {
-  background-size: cover;
-  background-position: center;
-  max-height: 200px;
+  color           : var(--col-lightest);
 }
 </style>

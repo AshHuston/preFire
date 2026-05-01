@@ -1,5 +1,5 @@
 <template>
-    <a :href="button.link" >
+    <a class="nav-button" :href="button.link" >
         <button :class="button.frame">
             <img 
                 v-if="button.frame === 'nav-home'"
@@ -63,8 +63,7 @@ a, button {
   --border-natural-size: 48px;
   --border-half-size   : 24px;
   flex: 1;
-  width: 90%;
-  margin-top: -20px;
+  width: 100%;
 
   border              : var(--border-half-size) solid transparent;
   border-image        : url(border.png) 33 round;
@@ -74,9 +73,6 @@ a, button {
   font-family         : Beleren;
   font-size           : 1.15em;
   color               : black;
-
-  justify-content: center;
-  align-items: center;
 
   z-index     : 1;
   transition  : 0.2s;
@@ -102,6 +98,11 @@ a, button {
 button {
   height: 70px;
   line-height: 1em;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .nav-home {
   background-color    : transparent;

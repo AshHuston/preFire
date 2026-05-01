@@ -36,14 +36,4 @@ const filteredNavItems = computed(() =>
     align-items: center;
 }
 
-/* .nav-button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 18px;
-    margin: 0 10px;
-    cursor: pointer;
-    width: 250px;
-} */
-
 </style>

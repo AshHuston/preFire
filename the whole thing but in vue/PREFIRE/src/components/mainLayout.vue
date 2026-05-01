@@ -20,8 +20,9 @@ const navItems = [
   { name: 'Decks', link: '/decks', frame: 'black' },
   { name: 'More Resources', link: '/guides', frame: 'red' },
   { name: 'About', link: '/guides', frame: 'green' },
-  { name: 'Discord', link: '/discord', frame: 'discord' }
+  { name: 'Discord', link: 'https://discord.gg/P7bV8ttzgT', frame: 'discord' }
 ];
+
 </script>
 
 <style scoped>
